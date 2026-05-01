@@ -1,0 +1,33 @@
+[
+  {
+    "orderId": 101,
+    "userId": 1,
+    "items": [
+      { "name": "Casque Bluetooth", "qty": 1, "price": 59.99 },
+      { "name": "Montre connectée", "qty": 1, "price": 129.99 }
+    ],
+    "total": 189.98,
+    "status": "livré",
+    "date": "2025-07-15"
+  },
+  {
+    "orderId": 102,
+    "userId": 2,
+    "items": [
+      { "name": "Enceinte portable", "qty": 2, "price": 39.99 }
+    ],
+    "total": 79.98,
+    "status": "en cours",
+    "date": "2025-07-20"
+  },
+  {
+    "orderId": 103,
+    "userId": 1,
+    "items": [
+      { "name": "Montre connectée", "qty": 1, "price": 129.99 }
+    ],
+    "total": 129.99,
+    "status": "expédié",
+    "date": "2025-08-01"
+  }
+]

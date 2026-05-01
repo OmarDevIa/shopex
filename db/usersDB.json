@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "email": "alice@example.com",
+    "password": "alice123",
+    "address": "1 rue du Chemin, Paris"
+  },
+  {
+    "id": 2,
+    "email": "bob@example.com",
+    "password": "bob456",
+    "address": "34 avenue du Lac, Lyon"
+  },
+  {
+    "id": 3,
+    "email": "carol@example.com",
+    "password": "carol789",
+    "address": "56 boulevard Soleil, Marseille"
+  },
+  {
+    "id": 4,
+    "email": "dave@example.com",
+    "password": "dave321",
+    "address": "78 impasse Verte, Toulouse"
+  },
+  {
+    "id": 5,
+    "email": "eve@example.com",
+    "password": "eve654",
+    "address": "90 place Rouge, Bordeaux"
+  }
+]

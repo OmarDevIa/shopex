@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEx | E-commerce Intelligent 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fff8f0;
+            --bg-soft: #ffe8cc;
+            --ink: #1f1a17;
+            --ink-soft: #5a4a3f;
+            --card: rgba(255, 255, 255, 0.82);
+            --line: rgba(74, 52, 40, 0.12);
+            --accent: #ea580c;
+            --accent-2: #0f766e;
+            --accent-3: #facc15;
+            --radius: 22px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Manrope', sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 8% 12%, rgba(234, 88, 12, 0.24), transparent 34%),
+                radial-gradient(circle at 88% 24%, rgba(15, 118, 110, 0.21), transparent 36%),
+                radial-gradient(circle at 56% 82%, rgba(250, 204, 21, 0.2), transparent 32%),
+                linear-gradient(145deg, #fff8f0 0%, #fff4e8 55%, #fff2e3 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.12;
+            background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #000 0.7px, transparent 1.2px);
+            background-size: 5px 5px;
+            z-index: -1;
+        }
+
+        .topbar {
+            text-align: center;
+            background: linear-gradient(90deg, #0f766e, #0d9488);
+            color: #f0fdfa;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+            padding: 0.58rem 1rem;
+        }
+
+        header {
+            width: min(1140px, calc(100% - 2rem));
+            margin: 1rem auto 0;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0.95rem 0.75rem 1.3rem;
+            position: sticky;
+            top: 0.75rem;
+            z-index: 20;
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            color: #7c2d12;
+        }
+
+        .logo span {
+            color: var(--accent-2);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .header-btn {
+            border: none;
+            border-radius: 999px;
+            padding: 0.62rem 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            color: #fff;
+            background: linear-gradient(120deg, #ea580c, #f97316);
+        }
+
+        main {
+            width: min(1140px, calc(100% - 2rem));
+            margin: 1.35rem auto 3rem;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 1.2rem;
+            align-items: stretch;
+        }
+
+        .hero-content {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 2rem;
+            animation: riseIn 0.7s ease both;
+        }
+
+        .pill {
+            display: inline-flex;
+            gap: 0.55rem;
+            align-items: center;
+            border-radius: 999px;
+            background: #fff7ed;
+            color: #9a3412;
+            border: 1px solid #fdba74;
+            padding: 0.35rem 0.76rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 1rem 0 0.65rem;
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2rem, 3vw, 3rem);
+            line-height: 1.06;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content p {
+            margin: 0;
+            font-size: 1.03rem;
+            color: var(--ink-soft);
+            max-width: 52ch;
+        }
+
+        .cta-wrap {
+            margin-top: 1.35rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            border: none;
+            border-radius: 12px;
+            padding: 0.88rem 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            font-family: 'Sora', sans-serif;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background: linear-gradient(130deg, #ea580c, #fb923c);
+            box-shadow: 0 12px 24px rgba(234, 88, 12, 0.24);
+        }
+
+        .btn-secondary {
+            color: var(--ink);
+            background: #fff;
+            border: 1px solid var(--line);
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.72rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: #fffbf8;
+            padding: 0.9rem 0.8rem;
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 1.35rem;
+            font-family: 'Sora', sans-serif;
+        }
+
+        .metric span {
+            font-size: 0.82rem;
+            color: var(--ink-soft);
+        }
+
+        .hero-visual {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            min-height: 420px;
+            border: 1px solid rgba(15, 118, 110, 0.22);
+            background:
+                linear-gradient(160deg, rgba(15, 118, 110, 0.18), rgba(250, 204, 21, 0.22)),
+                url('https://images.unsplash.com/photo-1607082352121-fa243f3dde32?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+            animation: riseIn 0.85s ease both;
+            animation-delay: 0.12s;
+        }
+
+        .floating {
+            position: absolute;
+            right: 1rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.62);
+            background: rgba(255, 255, 255, 0.84);
+            backdrop-filter: blur(8px);
+            padding: 0.75rem 0.92rem;
+            font-family: 'Sora', sans-serif;
+            box-shadow: 0 12px 28px rgba(28, 25, 23, 0.16);
+            animation: bob 3s ease-in-out infinite;
+        }
+
+        .floating.top {
+            top: 1.1rem;
+        }
+
+        .floating.bottom {
+            bottom: 1.1rem;
+            animation-delay: 0.4s;
+        }
+
+        .section {
+            margin-top: 1.25rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+            background: var(--card);
+            padding: 1.4rem;
+            animation: riseIn 0.65s ease both;
+            animation-delay: 0.2s;
+        }
+
+        .section h2 {
+            margin: 0;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.55rem;
+        }
+
+        .section-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .section-top p {
+            margin: 0.55rem 0 0;
+            color: var(--ink-soft);
+            max-width: 62ch;
+        }
+
+        .product-grid {
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.85rem;
+        }
+
+        .card {
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: #fff;
+            overflow: hidden;
+            transition: transform 0.24s ease, box-shadow 0.24s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 36px rgba(71, 52, 40, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 165px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-info {
+            padding: 0.9rem;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0f766e;
+            background: #ccfbf1;
+            border-radius: 999px;
+            padding: 0.26rem 0.55rem;
+            margin-bottom: 0.56rem;
+        }
+
+        .card-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            margin: 0 0 0.48rem;
+        }
+
+        .card-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price {
+            font-weight: 800;
+            font-size: 1.04rem;
+            color: #9a3412;
+        }
+
+        .buy {
+            border: none;
+            background: #1f1a17;
+            color: #fff;
+            border-radius: 10px;
+            padding: 0.5rem 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        footer {
+            width: min(1140px, calc(100% - 2rem));
+            margin: 1.25rem auto 2rem;
+            text-align: center;
+            color: #6b5f56;
+            font-size: 0.95rem;
+        }
+
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bob {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @media (max-width: 1020px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            nav a {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                width: calc(100% - 1rem);
+                margin-top: 0.5rem;
+                border-radius: 18px;
+            }
+
+            main,
+            footer {
+                width: calc(100% - 1rem);
+            }
+
+            .hero-content,
+            .section {
+                padding: 1.1rem;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                min-height: 330px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    <div class="topbar">Livraison express 24h en France + retours gratuits pendant 30 jours</div>
+
+    <header>
+        <div class="logo">Shop<span>Ex</span></div>
+        <nav>
+            <a href="#">Accueil</a>
+            <a href="#">Nouveautes</a>
+            <a href="#">Best-sellers</a>
+            <a href="#">Support IA</a>
+            <button class="header-btn">Mon compte</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="pill">Shopping intelligent 2026</span>
+                <h1>Un e-commerce plus vivant, plus rapide, plus personnel.</h1>
+                <p>ShopEx combine boutique premium et assistant IA pour aider vos clients a comparer, choisir et commander en quelques secondes.</p>
+
+                <div class="cta-wrap">
+                    <button class="btn-primary">Explorer les collections</button>
+                    <button class="btn-secondary">Tester le chatbot</button>
+                </div>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <strong>1.2k+</strong>
+                        <span>clients actifs / mois</span>
+                    </div>
+                    <div class="metric">
+                        <strong>98%</strong>
+                        <span>satisfaction support</span>
+                    </div>
+                    <div class="metric">
+                        <strong>-32%</strong>
+                        <span>temps de commande</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual" aria-label="Banniere produits premium">
+                <div class="floating top">Nouveau: Coach IA achat en direct</div>
+                <div class="floating bottom">Tendance: audio, wearables, gaming</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-top">
+                <div>
+                    <h2>Produits stars cette semaine</h2>
+                    <p>Des fiches plus claires, des visuels plus impactants et une experience mobile fluide pour augmenter la conversion.</p>
+                </div>
+                <button class="btn-secondary">Voir tout le catalogue</button>
+            </div>
+
+            <div class="product-grid">
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80" alt="Casque audio premium">
+                    <div class="card-info">
+                        <span class="tag">Audio</span>
+                        <h3 class="card-title">Casque NoiseCancel Pro</h3>
+                        <div class="card-row">
+                            <span class="price">189,99EUR</span>
+                            <button class="buy">Ajouter</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80" alt="Montre connectee">
+                    <div class="card-info">
+                        <span class="tag">Wearable</span>
+                        <h3 class="card-title">Montre Pulse X8</h3>
+                        <div class="card-row">
+                            <span class="price">29,00EUR</span>
+                            <button class="buy">Ajouter</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=800&q=80" alt="Enceinte bluetooth">
+                    <div class="card-info">
+                        <span class="tag">Maison</span>
+                        <h3 class="card-title">Speaker Orbit Mini</h3>
+                        <div class="card-row">
+                            <span class="price">79,90EUR</span>
+                            <button class="buy">Ajouter</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Montre design luxe">
+                    <div class="card-info">
+                        <span class="tag">Edition limitee</span>
+                        <h3 class="card-title">Chrono One Titanium</h3>
+                        <div class="card-row">
+                            <span class="price">32,00EUR</span>
+                            <button class="buy">Ajouter</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 ShopEx. E-commerce intelligent, experience humaine.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+    <script src="./chatbot/chatbot.js" theme="auto" data-api-base="http://localhost:3001"></script>
+</body>
+</html>
